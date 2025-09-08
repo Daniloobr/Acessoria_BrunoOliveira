@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bruno Oliveira Assessoria Esportiva</title>
+   <link rel="stylesheet" href="/css/nav.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <!-- Substitua o texto pela sua logo -->
+            <img src="/images/logo.png" alt="Logo BrunoOliveira" class="logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Planos</a></li>
+            <li><a href="#">Nossa Equipe</a></li>
+            <li><a href="#">Depoimentos</a></li>
+            <li><a href="#">Blog</a></li>
+            <button class="btn-contato">Contato</button>
+        </ul>
+        <div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links li');
+
+        hamburger.addEventListener('click', () => {
+            // Alternar Nav
+            navLinks.classList.toggle('nav-active');
+            
+            // Animar Links
+            links.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+            
+            // Animação do Hamburger
+            hamburger.classList.toggle('toggle');
+        });
+    </script>
+</body>
+</html>
