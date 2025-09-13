@@ -1,0 +1,275 @@
+/* ==============================
+   CSS Isolado para Pricing Page
+   Prefixo: .pricing-page
+============================== */
+
+/* Variáveis CSS */
+.pricing-page-root {
+  --color-primary: #245ace;
+  --color-secondary: #07bdc9;
+  --color-accent: #02eeff;
+  --color-dark-bg: rgba(5, 27, 61, 1);
+  --color-dark-bg-2: rgba(15, 15, 147, 1);
+  --color-gradient: rgba(22, 43, 39, 1);
+  --color-white: #fafbfd;
+  --color-dark-text: #333333;
+  --color-light-text: #040405;
+  --color-border: #d4d4d4;
+  --color-cyan: #162b27;
+
+  --font-rubik-regular: 'Rubik-Regular', sans-serif;
+  --font-rubik-bold-italic: 'Rubik-BoldItalic', sans-serif;
+  --font-rubik-italic: 'Rubik-Italic', sans-serif;
+  --font-rubik-semibold-italic: 'Rubik-SemiBoldItalic', sans-serif;
+  --font-rubik-medium: 'Rubik-Medium', sans-serif;
+
+  --border-radius: 12px;
+  --border-radius-button: 26px;
+  --spacing-10: 10px;
+  --spacing-20: 20px;
+  --spacing-27: 27px;
+  --spacing-30: 30px;
+}
+
+/* ==============================
+   Reset e Box-sizing
+============================== */
+.pricing-page * {
+  box-sizing: border-box;
+}
+
+/* ==============================
+   Background e Gradiente
+============================== */
+.pricing-page-background {
+  background: radial-gradient(closest-side, var(--color-dark-bg) 22%, var(--color-dark-bg-2) 100%);
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1920px;
+  position: relative;
+}
+
+.pricing-page-gradient {
+  background: radial-gradient(closest-side, var(--color-gradient) 0%, rgba(22,43,39,0) 100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ==============================
+   Containers
+============================== */
+.pricing-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 150px 0 50px;
+  position: relative;
+}
+
+/* ==============================
+   Títulos e textos
+============================== */
+.pricing-page-section-subtitle {
+  color: var(--color-secondary);
+  text-align: center;
+  font-family: var(--font-rubik-regular);
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.pricing-page-section-title {
+  color: var(--color-white);
+  text-align: center;
+  font-family: var(--font-rubik-bold-italic);
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  margin: 10px 0 40px;
+}
+
+.pricing-page-plan-title {
+  color: var(--color-dark-text);
+  text-align: center;
+  font-family: var(--font-rubik-bold-italic);
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.pricing-page-plan-price {
+  color: var(--color-primary);
+  font-family: var(--font-rubik-bold-italic);
+  font-size: 61px;
+  line-height: 61px;
+  font-weight: 700;
+  font-style: italic;
+  display: flex;
+  align-items: flex-start;
+}
+
+.pricing-page-plan-currency,
+.pricing-page-plan-period {
+  color: var(--color-primary);
+  font-family: var(--font-rubik-italic);
+  font-size: 18px;
+  line-height: 18px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.pricing-page-plan-feature {
+  color: var(--color-light-text);
+  text-align: center;
+  font-family: var(--font-rubik-regular);
+  font-size: 16px;
+  line-height: 25px;
+}
+
+/* ==============================
+   Cards de planos
+============================== */
+.pricing-page-plan-card {
+  border-radius: var(--border-radius);
+  padding: 0 var(--spacing-27);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 305px;
+  min-height: 685px;
+  margin: 20px;
+  position: relative;
+  background: var(--color-white);
+  transition: transform 0.3s ease;
+}
+
+.pricing-page-plan-card--blue {
+  background: var(--color-primary);
+}
+
+.pricing-page-plan-card--blue .pricing-page-plan-title,
+.pricing-page-plan-card--blue .pricing-page-plan-price,
+.pricing-page-plan-card--blue .pricing-page-plan-currency,
+.pricing-page-plan-card--blue .pricing-page-plan-period,
+.pricing-page-plan-card--blue .pricing-page-plan-feature {
+  color: var(--color-white);
+}
+
+/* ==============================
+   Botões
+============================== */
+.pricing-page-plan-button {
+  border-radius: var(--border-radius-button);
+  border: 2px solid;
+  padding: 12px 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pricing-page-plan-button--outline {
+  background: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.pricing-page-plan-button--solid {
+  background: var(--color-cyan);
+  border-color: var(--color-cyan);
+}
+
+.pricing-page-button-text {
+  font-family: var(--font-rubik-semibold-italic);
+  font-size: 18px;
+  line-height: 28.8px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+}
+
+.pricing-page-button-text--blue {
+  color: var(--color-primary);
+}
+
+.pricing-page-button-text--cyan {
+  color: var(--color-accent);
+}
+
+/* ==============================
+   Badge de plano popular
+============================== */
+.pricing-page-popular-badge {
+  background: var(--color-accent);
+  border-radius: 0 0 var(--spacing-20) var(--spacing-20);
+  padding: 12px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pricing-page-popular-badge-text {
+  color: var(--color-cyan);
+  font-family: var(--font-rubik-medium);
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* ==============================
+   Utilitários de layout
+============================== */
+.pricing-page-flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.pricing-page-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==============================
+   Responsividade
+============================== */
+@media (max-width: 1300px) {
+  .pricing-page-background {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-page-background {
+    padding: 0 20px;
+  }
+
+  .pricing-page-section-title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .pricing-page-plan-card {
+    max-width: 100%;
+    min-height: auto;
+  }
+}

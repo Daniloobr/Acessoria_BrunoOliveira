@@ -8,14 +8,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #00b383;
-      --primary-dark: #008c68;
-      --dark: #000;
-      --light: #fff;
-      --gray: #ccc; /* ficou mais claro para aparecer no fundo escuro */
-      --transition: all 0.3s ease;
-      --shadow: 0 5px 15px rgba(0,0,0,0.2);
-      --radius: 12px;
+      --primary: #245ace;
+      --primary-dark: #1a4299;
+      --dark: #0b0f17;
+      --light: #ffffff; /* Alterado para branco puro */
+      --gray: #e0e0e0; /* Cinza mais claro para melhor contraste */
+      --transition: all 0.35s ease;
+      --shadow: 0 10px 25px rgba(0,0,0,0.3);
+      --radius: 16px;
+      --glass-bg: rgba(255, 255, 255, 0.08); /* Aumentada opacidade */
+      --glass-border: 1px solid rgba(255, 255, 255, 0.15); /* Borda mais visível */
     }
 
     * {
@@ -26,8 +28,8 @@
 
     body {
       font-family: 'Open Sans', sans-serif;
-      background: #111; /* fundo mais escuro */
-      color: var(--light); /* textos claros */
+      background: radial-gradient(circle at top, #101621 0%, #05070d 100%);
+      color: var(--light);
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
@@ -42,19 +44,40 @@
 
     .hero-section {
       flex: 1;
-      padding: 60px 40px;
+      padding: 80px 40px;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Partículas de fundo */
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(36,90,206,0.08) 0%, transparent 70%);
+      animation: pulse 6s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1);}
+      100% { transform: scale(1.1);}
     }
 
     .hero-content {
+      position: relative;
+      z-index: 2;
       max-width: 1200px;
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 50px;
     }
 
     @media (min-width: 992px) {
@@ -64,23 +87,29 @@
       }
     }
 
-    /* Área reservada para imagens */
     .hero-graphic {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
+      perspective: 1000px;
     }
 
     .graphic-container {
       position: relative;
       width: 100%;
-      max-width: 500px;
-      height: 350px;
+      max-width: 480px;
+      height: 360px;
+      transform-style: preserve-3d;
+      animation: float 5s ease-in-out infinite;
     }
 
-    /* Imagem de decoração */
+    @keyframes float {
+      0% { transform: translateY(0px);}
+      50% { transform: translateY(-12px);}
+      100% { transform: translateY(0px);}
+    }
+
     .decoracao {
       position: absolute;
       top: 0;
@@ -89,60 +118,74 @@
       height: 100%;
       object-fit: cover;
       border-radius: var(--radius);
-      opacity: 0.81; /* mais discreta no fundo escuro */
+      opacity: 0.7;
+      filter: brightness(0.85) blur(1px);
     }
 
-    /* Imagem do corredor por cima */
     .corredor {
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      max-width: 55%; /* diminuída */
+      max-width: 60%;
       height: auto;
+      filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.5));
     }
 
     .hero-info {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 25px;
-      padding: 20px 0;
+      gap: 30px;
     }
 
     .training-badge {
-      color: var(--primary);
-      font-size: 1.1rem;
+      color: var(--light); /* Alterado para branco */
+      font-size: 1rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       display: inline-block;
-      padding: 8px 15px;
-      background: rgba(0, 179, 131, 0.1);
-      border-radius: 30px;
-      align-self: flex-start;
-      border: 1px solid rgba(0, 179, 131, 0.3);
+      padding: 10px 20px;
+      background: var(--glass-bg);
+      border-radius: 50px;
+      border: var(--glass-border);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 0 10px rgba(36, 90, 206, 0.2);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Adicionada sombra de texto */
     }
 
     .main-heading {
       font-family: 'Montserrat', sans-serif;
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       line-height: 1.2;
       font-weight: 800;
       color: var(--light);
+      text-shadow: 0 5px 15px rgba(0,0,0,0.7);
     }
 
     .main-heading .highlight {
       color: var(--primary);
       position: relative;
-      display: inline-block;
+    }
+
+    .main-heading .highlight::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 4px;
+      opacity: 0.5;
     }
 
     .divider {
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), #80d4b7);
-      border-radius: 2px;
+      width: 120px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), #4a73db);
+      border-radius: 3px;
       margin: 15px 0;
     }
 
@@ -151,32 +194,48 @@
       color: var(--gray);
       max-width: 550px;
       line-height: 1.8;
+      font-weight: 500; /* Texto um pouco mais espesso */
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Adicionada sombra de texto */
     }
 
     .cta-button {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: var(--light);
-      padding: 18px 35px;
+      padding: 18px 40px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.1rem;
       transition: var(--transition);
-      margin-top: 15px;
       box-shadow: var(--shadow);
-      align-self: flex-start;
       border: none;
       cursor: pointer;
       position: relative;
       overflow: hidden;
     }
 
+    .cta-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.2);
+      transform: skewX(-20deg);
+      transition: left 0.4s ease;
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
     .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 179, 131, 0.4);
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 25px rgba(36, 90, 206, 0.4);
     }
 
     .cta-button i {
@@ -184,7 +243,7 @@
     }
 
     .cta-button:hover i {
-      transform: translateX(5px);
+      transform: translateX(6px);
     }
 
     .features {
@@ -198,32 +257,41 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255,255,255,0.05);
+      background: var(--glass-bg);
       padding: 12px 20px;
-      border-radius: 30px;
-      font-size: 0.9rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      color: var(--light);
+      border-radius: 50px;
+      font-size: 0.95rem;
+      border: var(--glass-border);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      color: var(--light); /* Garantindo texto branco */
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Adicionada sombra de texto */
+    }
+
+    .feature:hover {
+      transform: translateY(-2px);
+      background: rgba(36,90,206,0.15); /* Fundo mais visível no hover */
     }
 
     .feature i {
       color: var(--primary);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      text-shadow: none;
     }
 
     @media (max-width: 991px) {
       .main-heading {
-        font-size: 2.5rem;
+        font-size: 2.7rem;
       }
     }
 
     @media (max-width: 768px) {
       .hero-section {
-        padding: 40px 20px;
+        padding: 50px 20px;
       }
 
       .main-heading {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
 
       .description {
@@ -238,6 +306,31 @@
       .features {
         flex-direction: column;
       }
+      
+      /* Melhorias para mobile */
+      .training-badge {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+      
+      .feature {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+      }
+    }
+
+    /* Melhorias de acessibilidade para modo de alto contraste */
+    @media (prefers-contrast: high) {
+      :root {
+        --light: #ffffff;
+        --gray: #ffffff;
+        --glass-bg: rgba(0, 0, 0, 0.4);
+      }
+      
+      .training-badge,
+      .feature {
+        border: 2px solid var(--primary);
+      }
     }
   </style>
 </head>
@@ -245,17 +338,12 @@
   <div class="main-container">
     <section class="hero-section">
       <div class="hero-content">
-        <!-- ÁREA DE IMAGENS -->
         <div class="hero-graphic">
           <div class="graphic-container">
-            <!-- Coloque a imagem de decoração -->
             <img src="/images/decor.png" alt="Decoração" class="decoracao">
-            <!-- Coloque a imagem sua correndo -->
             <img src="/images/correndo.png" alt="Eu correndo" class="corredor">
           </div>
         </div>
-
-        <!-- TEXTO -->
         <div class="hero-info">
           <span class="training-badge">Treinamento de corrida online ou presencial</span>
           <h1 class="main-heading">

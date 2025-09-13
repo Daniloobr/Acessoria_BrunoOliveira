@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depoimentos - Metodologia Aprovada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ================================
+       ESTILOS ESPECÍFICOS DE DEPOIMENTOS
+       ================================ */
+
+    .testimonials-section {
+      --color-primary: #245ace;
+      --color-primary-light: #3a6aef;
+      --color-secondary: #07bdc9;
+      --color-accent: #02eeff;
+      --color-white: #fafbfd;
+      --color-light-bg: #f1f1f1;
+      --color-dark-text: #333333;
+      --color-light-text: #666666;
+      --color-border: #e0e0e0;
+      --border-radius: 12px;
+      --border-radius-card: 52px;
+      --border-radius-button: 26px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+      --transition: all 0.3s ease;
+
+      font-family: 'Rubik', sans-serif;
+      line-height: 1.6;
+      color: var(--color-dark-text);
+      background: var(--color-light-bg);
+      padding: 100px 20px;
+    }
+
+    .testimonials-container {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* Cabeçalho */
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 70px;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .testimonials-subtitle {
+      color: var(--color-primary);
+      font-size: 20px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 15px;
+    }
+
+    .testimonials-title {
+      color: var(--color-dark-text);
+      font-size: 40px;
+      font-weight: 700;
+      font-style: italic;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .testimonials-underline {
+      width: 188px;
+      height: 4px;
+      background: var(--color-primary);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Grid de depoimentos */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    /* Card de depoimento */
+    .testimonial-card {
+      background: var(--color-primary);
+      border-radius: var(--border-radius-card);
+      padding: 40px 50px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .testimonial-card:nth-child(even) {
+      margin-top: 60px;
+    }
+
+    .testimonial-card:before {
+      content: "\201C";
+      font-family: Georgia, serif;
+      font-size: 100px;
+      color: rgba(255, 255, 255, 0.1);
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      line-height: 1;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .testimonial-content {
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-text {
+      color: var(--color-white);
+      font-size: 18px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    /* Informações do autor */
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .author-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 20px;
+      flex-shrink: 0;
+      border: 5px solid var(--color-white);
+      background: var(--color-white);
+      position: relative;
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-info {
+      flex-grow: 1;
+    }
+
+    .author-name {
+      font-size: 25px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--color-white);
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .author-role {
+      font-size: 20px;
+      color: var(--color-white);
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    /* CTA */
+    .testimonials-cta-container {
+      text-align: center;
+      margin-top: 50px;
+      animation: fadeInUp 0.8s ease 0.5s forwards;
+      opacity: 0;
+    }
+
+    .testimonials-cta-button {
+      display: inline-block;
+      background: var(--color-white);
+      color: var(--color-primary);
+      padding: 16px 40px;
+      border-radius: var(--border-radius-button);
+      font-size: 18px;
+      font-weight: 600;
+      font-style: italic;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(36, 90, 206, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-cta-button:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .testimonials-cta-button:hover {
+      background: var(--color-primary-light);
+      color: var(--color-white);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(36, 90, 206, 0.4);
+    }
+
+    .testimonials-cta-button:hover:after {
+      left: 100%;
+    }
+
+    /* Responsividade */
+    @media (max-width: 1200px) {
+      .testimonials-grid {
+        gap: 30px;
+      }
+      .testimonial-card {
+        padding: 35px 40px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .testimonial-card:nth-child(even) {
+        margin-top: 0;
+      }
+      .testimonials-title {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-section {
+        padding: 70px 15px;
+      }
+      .testimonials-title {
+        font-size: 28px;
+      }
+      .testimonial-card {
+        padding: 30px;
+        border-radius: 30px;
+      }
+      .testimonial-text {
+        font-size: 16px;
+      }
+      .author-avatar {
+        width: 90px;
+        height: 90px;
+      }
+      .author-name {
+        font-size: 22px;
+      }
+      .author-role {
+        font-size: 18px;
+      }
+      .testimonials-cta-button {
+        padding: 14px 30px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .testimonial-author {
+        flex-direction: column;
+        text-align: center;
+      }
+      .author-avatar {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      .testimonial-card:before {
+        font-size: 70px;
+        top: 10px;
+        left: 20px;
+      }
+    }
+
+    /* Animações */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+    .testimonial-card:nth-child(4) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+  <section class="testimonials-section">
+    <div class="testimonials-container">
+      <!-- Cabeçalho -->
+      <div class="testimonials-header">
+        <p class="testimonials-subtitle">Metodologia testada e aprovada</p>
+        <h2 class="testimonials-title">A experiência de quem já usou</h2>
+        <div class="testimonials-underline"></div>
+      </div>
+
+      <!-- Grid de depoimentos -->
+      <div class="testimonials-grid">
+        <!-- Depoimento 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              A melhor acessória sem dúvida!!! Profissionais competentes e experientes que nos ajudam a conquistar excelentes resultados.
+              Sem falar da união do grupo, é realmente uma grande família com pessoas que vibram muito com as conquistas dos colegas de clube.
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="ellipse-10.png" alt="Carlos Nascimento">
+            </div>
+            <div class="author-info">
+              <h3 class="author-name">Carlos Nascimento</h3>
+              <p class="author-role">Corredor e agora maratonista</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              Excelente clube de corrida! As planilhas são individualizadas, respeitando o perfil de cada aluno.
+              Bruno tem uma atenção conosco que é fora de série! Evolui muito na corrida depois de ter ingressado na assessoria!
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="carla-blotto0.png" alt="Pryanka Fontes">
+            </div>
+            <div class="author-info">
+              <h3 class="author-name">Pryanka Fontes</h3>
+              <p class="author-role">Corredora</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              Participar do clube de corrida B.O. tem sido uma experiência transformadora.
+              Desde o primeiro treino, fui recebido com muita energia e apoio pela equipe e pelos outros corredores.
+              Cada encontro é uma mistura perfeita de desafio, motivação e aprendizado.
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="rebeca-mangabeira-300-x-300-webp0.png" alt="Fabíola Costa">
+            </div>
+            <div class="author-info">
+              <h3 class="author-name">Fabíola Costa</h3>
+              <p class="author-role">Meia-Maratonista</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 4 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">
+              Bruno é um excelente treinador e muito experiente. Foi atleta por muitos anos, o que enriquece ainda mais a sua bagagem.
+              Além disso, busca constantemente se atualizar e trazer para os alunos os melhores direcionamentos.
+              A assessoria conta com uma excelente estrutura de suporte para todos os treinos e provas.
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="cleber-mendon-a0.png" alt="Uelton Carvalho">
+            </div>
+            <div class="author-info">
+              <h3 class="author-name">Uelton Carvalho</h3>
+              <p class="author-role">Corredor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botão de CTA -->
+      <div class="testimonials-cta-container">
+        <a href="#" class="testimonials-cta-button">Quero conquistar minhas metas</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
