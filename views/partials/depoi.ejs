@@ -121,7 +121,7 @@
     }
 
     .testimonial-content {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       position: relative;
       z-index: 2;
     }
@@ -131,6 +131,24 @@
       font-size: 18px;
       line-height: 1.8;
       font-weight: 400;
+    }
+
+    /* Avaliação (estrelas + Google) */
+    .testimonial-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-rating i {
+      color: #FFD700;
+      font-size: 18px;
+    }
+
+    .google-logo {
+      width: 18px;
+      height: 18px;
     }
 
     /* Informações do autor */
@@ -225,15 +243,6 @@
     }
 
     /* Responsividade */
-    @media (max-width: 1200px) {
-      .testimonials-grid {
-        gap: 30px;
-      }
-      .testimonial-card {
-        padding: 35px 40px;
-      }
-    }
-
     @media (max-width: 992px) {
       .testimonials-grid {
         grid-template-columns: 1fr;
@@ -241,18 +250,9 @@
       .testimonial-card:nth-child(even) {
         margin-top: 0;
       }
-      .testimonials-title {
-        font-size: 34px;
-      }
     }
 
     @media (max-width: 768px) {
-      .testimonials-section {
-        padding: 70px 15px;
-      }
-      .testimonials-title {
-        font-size: 28px;
-      }
       .testimonial-card {
         padding: 30px;
         border-radius: 30px;
@@ -260,48 +260,11 @@
       .testimonial-text {
         font-size: 16px;
       }
-      .author-avatar {
-        width: 90px;
-        height: 90px;
-      }
-      .author-name {
-        font-size: 22px;
-      }
-      .author-role {
-        font-size: 18px;
-      }
-      .testimonials-cta-button {
-        padding: 14px 30px;
-        font-size: 16px;
-      }
     }
 
-    @media (max-width: 576px) {
-      .testimonial-author {
-        flex-direction: column;
-        text-align: center;
-      }
-      .author-avatar {
-        margin-right: 0;
-        margin-bottom: 15px;
-      }
-      .testimonial-card:before {
-        font-size: 70px;
-        top: 10px;
-        left: 20px;
-      }
-    }
-
-    /* Animações */
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
@@ -324,6 +287,10 @@
       <div class="testimonials-grid">
         <!-- Depoimento 1 -->
         <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/512px-Google_%22G%22_logo.svg.png" class="google-logo" alt="Google">
+          </div>
           <div class="testimonial-content">
             <p class="testimonial-text">
               A melhor acessória sem dúvida!!! Profissionais competentes e experientes que nos ajudam a conquistar excelentes resultados.
@@ -332,7 +299,7 @@
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="ellipse-10.png" alt="Carlos Nascimento">
+              <img src="/images/depoimentos/kadu.png.png" alt="Carlos Nascimento">
             </div>
             <div class="author-info">
               <h3 class="author-name">Carlos Nascimento</h3>
@@ -343,6 +310,10 @@
 
         <!-- Depoimento 2 -->
         <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/512px-Google_%22G%22_logo.svg.png" class="google-logo" alt="Google">
+          </div>
           <div class="testimonial-content">
             <p class="testimonial-text">
               Excelente clube de corrida! As planilhas são individualizadas, respeitando o perfil de cada aluno.
@@ -351,7 +322,7 @@
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="carla-blotto0.png" alt="Pryanka Fontes">
+              <img src="/images/depoimentos/prianka.png.png" alt="Pryanka Fontes">
             </div>
             <div class="author-info">
               <h3 class="author-name">Pryanka Fontes</h3>
@@ -362,6 +333,10 @@
 
         <!-- Depoimento 3 -->
         <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/512px-Google_%22G%22_logo.svg.png" class="google-logo" alt="Google">
+          </div>
           <div class="testimonial-content">
             <p class="testimonial-text">
               Participar do clube de corrida B.O. tem sido uma experiência transformadora.
@@ -371,7 +346,7 @@
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="rebeca-mangabeira-300-x-300-webp0.png" alt="Fabíola Costa">
+              <img src="/images/depoimentos/fabiola.png" alt="Fabíola Costa">
             </div>
             <div class="author-info">
               <h3 class="author-name">Fabíola Costa</h3>
@@ -382,6 +357,10 @@
 
         <!-- Depoimento 4 -->
         <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/512px-Google_%22G%22_logo.svg.png" class="google-logo" alt="Google">
+          </div>
           <div class="testimonial-content">
             <p class="testimonial-text">
               Bruno é um excelente treinador e muito experiente. Foi atleta por muitos anos, o que enriquece ainda mais a sua bagagem.
@@ -391,7 +370,7 @@
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="cleber-mendon-a0.png" alt="Uelton Carvalho">
+              <img src="/images/depoimentos/welton.png" alt="Uelton Carvalho">
             </div>
             <div class="author-info">
               <h3 class="author-name">Uelton Carvalho</h3>
